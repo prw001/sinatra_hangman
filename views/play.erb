@@ -2,19 +2,20 @@
 <html>
 <!--gameplay content -->
 <% content_for :gameplay do %>
+	<div id='letter_slots_container'>
 	<% game.secret_word.length.times do |index| %>
 		<% letter = game.secret_word[index] %>
 			<% if game.guess_slots[letter] %>
-				<%= "#{letter} " %>
+				<span class='letter'><%= "#{letter} " %></span>
 			<% else %>
-				<%= blank %>
+				<span class='blank'><%= blank %></span>
 			<% end %>
 		<% end %>
 	<br><br>
 	</div>
-	<div>
+	<div id="selection_container">
 		<form action='guess'>
-			<select name="char">
+			<select id='letter_dropdown' name="char">
 				<% letter_bank.each do |letter| %>
 					<% unless game.guessed_letters.include? letter %>
 							<option value="<%= letter %>"><%=letter%>
@@ -22,11 +23,11 @@
 					<% end %>
 				<% end %>
 			</select>
-			<button type="submit">Guess!</button>
+			<button id='guess_button' type="submit">Guess!</button>
 		</form>
 	</div>
 	<br>
-	<div>
+	<div id='game_info'>
 		<span>
 			Incorrect guesses left: <%= game.turns_left %><br>
 			Guessed Letters: <%game.guessed_letters.each do |letter| %>

@@ -48,7 +48,9 @@ class Game
 		else
 			@turns_left -= 1
 		end
-		@guessed_letters << letter
+		unless @guessed_letters.include? letter
+			@guessed_letters << letter
+		end
 	end
 
 	def solved?

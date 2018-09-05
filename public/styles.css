@@ -1,4 +1,78 @@
-body{
+/*index.erb*/
 
+body{
+	padding-top: 80px;
+	padding-left: 20%;
 }
 
+@font-face {
+	font-family: ChalkItUp;
+	src: url('./fonts/DJB_Chalk_It_Up.ttf');
+}
+
+#main_container{
+	background-image: url('./images/chalkboard.jpg');
+	height: 700px;
+	width: 900px;
+	border: 10px solid #9e5d14cc;
+	border-radius: 5px;
+	font-family: ChalkItUp;
+}
+
+#title_box{
+	text-align: center;
+	color: lightgray;
+	font-size: 34px;
+}
+
+/*play.erb*/
+
+#letter_slots_container{
+	position: relative;
+	text-align: center;
+	margin-top: 240px;
+	font-size: 40px;
+	color: lightgray;
+}
+
+.letter{
+	color: #dbdb49;
+	font-size: 60px;
+}
+
+.blank{
+	font-family: Arial;
+}
+
+#selection_container{
+	text-align: center;
+}
+
+#letter_dropdown{
+	height: 50px;
+	width: 70px;
+	font-size: 28px;
+	font-family: ChalkItUp;
+	border: none;
+	text-align: center;
+	border-radius: 5px;
+	background: lightblue;
+}
+
+#guess_button{
+	height: 50px;
+	position: relative;
+	left: 10px;
+	border-radius: 5px;
+	font-family: ChalkItUp;
+	color: #dbdb49;
+	background: #3d444b;
+	font-size: 28px;
+}
+
+#game_info{
+	text-align: center;
+	font-size: 32px;
+	color: lightblue;
+}
+/*gameover.erb*/
