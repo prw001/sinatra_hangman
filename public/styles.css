@@ -1,8 +1,8 @@
 /*index.erb*/
 
 body{
-	padding-top: 80px;
-	padding-left: 20%;
+	padding-top: 50px;
+	padding-left: 22%;
 }
 
 @font-face {
@@ -30,7 +30,10 @@ body{
 #letter_slots_container{
 	position: relative;
 	text-align: center;
-	margin-top: 240px;
+	margin-top: 200px;
+	margin-bottom: 40px;
+	height: 60px;
+	line-height: 60px;
 	font-size: 40px;
 	color: lightgray;
 }
@@ -75,4 +78,51 @@ body{
 	font-size: 32px;
 	color: lightblue;
 }
+
 /*gameover.erb*/
+
+#game_over_title_box{
+	text-align: center;
+	font-size: 32px;
+	color: lightblue;
+	font-style: italic;
+}
+
+#game_over_title{
+
+}
+
+#game_over_message{
+	text-align: center;
+	font-size: 32px;
+	color: #dbdb49;
+}
+
+.secret_word{
+	color: lightblue;
+}
+
+#ng_button_container{
+	position: relative;
+	top: 10px;
+}
+
+#ng_button{
+	height: 80px;
+	width: 150px;
+	border-radius: 5px;
+	font-family: ChalkItUp;
+	font-size: 28px;
+	color: #236f14;
+	background: #9ab0c6;
+}
+
+#dict_message{
+	position: relative;
+	top: 40px;
+}
+
+#dict_link{
+	text-decoration: italic;
+	color: red;
+}

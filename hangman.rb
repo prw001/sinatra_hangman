@@ -45,11 +45,15 @@ class Game
 	def guess(letter)
 		if @guess_slots.keys.include? letter
 			@guess_slots[letter] = true
-		else
-			@turns_left -= 1
 		end
-		unless @guessed_letters.include? letter
-			@guessed_letters << letter
+
+		if !(@guess_slots.keys.include? letter) &&
+		   !(@guessed_letters.include? letter)
+		   		@turns_left -= 1
+		end
+
+		if !(@guessed_letters.include? letter)
+		   		@guessed_letters << letter
 		end
 	end
 

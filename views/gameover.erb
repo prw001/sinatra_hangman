@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html>
-<div>
-	<h2>Game Over!</h2>
+<div id='game_over_title_box'>
+	<h2 id='game_over_title'>Game Over!</h2>
 </div>
-<div>
+<div id='game_over_message'>
 	<p>
 		<% if game.solved? %>
 			Great Job! You guessed the word!
 		<% else %>
 			Nice try, but you did not guess the word.<br>
-			The secret word was: <%= game.secret_word %>
+			The secret word was: <span class='secret_word'>"<%= game.secret_word %>"</span>
 		<% end %>
 	</p>
-	<span>
+	<span id='ng_button_container'>
 		<a href='/newgame'>
-			<button type='Submit' value='newgame'>New Game
+			<button id='ng_button' type='Submit' value='newgame'>New Game
 			</button>
 		</a>
 	</span>
+	<div id='dict_message'>
+		<span>Not sure what <span class='secret_word'>"<%= game.secret_word %>"</span> means?<br>See the Oxford definition <a id='dict_link' href='https://en.oxforddictionaries.com/definition/<%=game.secret_word%>'><i>here!</i></a>
+		</span>
+	</div>
 </div>
 
 </html>
