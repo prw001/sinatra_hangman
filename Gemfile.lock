@@ -10,6 +10,8 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.3)
       tilt (~> 2.0)
+    sinatra-outputbuffer (0.1.0)
+      sinatra (>= 1.0.a)
     tilt (2.0.8)
 
 PLATFORMS
@@ -17,6 +19,7 @@ PLATFORMS
 
 DEPENDENCIES
   sinatra
+  sinatra-outputbuffer
 
 BUNDLED WITH
    1.16.2

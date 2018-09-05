@@ -1,8 +1,18 @@
 require 'sinatra'
+require 'sinatra/content_for'
 require 'sinatra/reloader'
+
 require_relative 'GameTools.rb'
 
 set :sessions, true
+
+use Rack::Session::Pool
+
+module Tools
+	extend GameTools
+end
+
+include Tools
 
 title = 'Hangman'
 blank = '__'
@@ -46,38 +56,26 @@ class Game
 	end
 end
 
-module Tools
-	extend GameTools
-end
-
-include Tools
-
-@@game = nil
-
 get '/' do 
 	erb :home, layout: :index, :locals => {:title => title, :letter_bank => letter_bank}
 end
 
 get '/gameover' do 
-	if @@game.solved?
-		#wins
-	else
-		#loses
-	end
+	erb :gameover, layout: :index, :locals => {:title => title, :game => session[:game]}
 	#prompt, new game option yielded
 end
 
 get '/newgame' do 
 	word = Tools::get_new_word
-	@@game = Game.new(word)
-	erb :play, layout: :index, :locals => {:title => title, :game => @@game, :blank => blank, :letter_bank => letter_bank}
+	session[:game] = Game.new(word)
+	erb :play, layout: :index, :locals => {:title => title, :game => session[:game], :blank => blank, :letter_bank => letter_bank}
 end
 
 get '/guess' do 
 	letter = params["char"]
-	@@game.guess(letter)
-	if @@game.turns_left > 0 && !(@@game.solved?)
-		erb :play, layout: :index, :locals => {:title => title, :game => @@game, :blank => blank, :letter_bank => letter_bank}
+	session[:game].guess(letter)
+	if session[:game].turns_left > 0 && !(session[:game].solved?)
+		erb :play, layout: :index, :locals => {:title => title, :game => session[:game], :blank => blank, :letter_bank => letter_bank}
 	else
 		redirect '/gameover'
 	end	

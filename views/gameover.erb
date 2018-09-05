@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<div>
+	<h2>Game Over!</h2>
+</div>
+<div>
+	<p>
+		<% if game.solved? %>
+			Great Job! You guessed the word!
+		<% else %>
+			Nice try, but you did not guess the word.<br>
+			The secret word was: <%= game.secret_word %>
+		<% end %>
+	</p>
+	<span>
+		<a href='/newgame'>
+			<button type='Submit' value='newgame'>New Game
+			</button>
+		</a>
+	</span>
+</div>
+
+</html>

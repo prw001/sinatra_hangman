@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 <html>
+<!--gameplay content -->
+<% content_for :gameplay do %>
+	<% game.secret_word.length.times do |index| %>
+		<% letter = game.secret_word[index] %>
+			<% if game.guess_slots[letter] %>
+				<%= "#{letter} " %>
+			<% else %>
+				<%= blank %>
+			<% end %>
+		<% end %>
+	<br><br>
+	</div>
+	<div>
+		<form action='guess'>
+			<select name="char">
+				<% letter_bank.each do |letter| %>
+					<% unless game.guessed_letters.include? letter %>
+							<option value="<%= letter %>"><%=letter%>
+							</option>
+					<% end %>
+				<% end %>
+			</select>
+			<button type="submit">Guess!</button>
+		</form>
+	</div>
+	<br>
+	<div>
+		<span>
+			Incorrect guesses left: <%= game.turns_left %><br>
+			Guessed Letters: <%game.guessed_letters.each do |letter| %>
+					<%= letter %>
+				<% end %>
+		</span>
+	</div>
+<% end %>
+<!-- end gameplay content -->
+
+<!-- static page content -->
 <head></head>
 	<body>
 		<div>
-		<% if game %>
-			<% game.secret_word.length.times do |index| %>
-				<% letter = game.secret_word[index] %>
-				<% if game.guess_slots[letter] %>
-					<%= "#{letter} " %>
-				<% else %>
-					<%= blank %>
-				<% end %>
-			<% end %>
-		<% end %>
-		<br><br>
-		</div>
-		<div>
-			<form action='guess'>
-				<select name="char">
-					<% letter_bank.each do |letter| %>
-						<% unless game.guessed_letters.include? letter %>
-								<option value="<%= letter %>"><%=letter%>
-								</option>
-						<% end %>
-					<% end %>
-				</select>
-				<button type="submit">Guess!</button>
-			</form>
-		</div>
-		<br><br>
-		<div>
-			<span>
-				Turns left: <%= game.turns_left %><br>
-				Guessed Letters: <%game.guessed_letters.each do |letter| %>
-					<%= letter %>
-				<% end %>
-			</span>
+			<%= yield_content :gameplay %>
 		</div>
 	</body>
+<!-- end static page content -->
 </html>
