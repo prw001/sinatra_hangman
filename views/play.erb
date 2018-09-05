@@ -18,32 +18,12 @@
 		<div>
 			<form action='guess'>
 				<select name="char">
-					<option value='a'>a</option>
-					<option value='b'>b</option>
-					<option value='c'>c</option>
-					<option value='d'>d</option>
-					<option value='e'>e</option>
-					<option value='f'>f</option>
-					<option value='g'>g</option>
-					<option value='h'>h</option>
-					<option value='i'>i</option>
-					<option value='j'>j</option>
-					<option value='k'>k</option>
-					<option value='l'>l</option>
-					<option value='m'>m</option>
-					<option value='n'>n</option>
-					<option value='o'>o</option>
-					<option value='p'>p</option>
-					<option value='q'>q</option>
-					<option value='r'>r</option>
-					<option value='s'>s</option>
-					<option value='t'>t</option>
-					<option value='u'>u</option>
-					<option value='v'>v</option>
-					<option value='w'>w</option>
-					<option value='x'>x</option>
-					<option value='y'>y</option>
-					<option value='z'>z</option>
+					<% letter_bank.each do |letter| %>
+						<% unless game.guessed_letters.include? letter %>
+								<option value="<%= letter %>"><%=letter%>
+								</option>
+						<% end %>
+					<% end %>
 				</select>
 				<button type="submit">Guess!</button>
 			</form>
