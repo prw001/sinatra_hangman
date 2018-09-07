@@ -63,7 +63,7 @@ class Game
 end
 
 get '/' do 
-	erb :home, layout: :index, :locals => {:title => title, :letter_bank => letter_bank}
+	redirect '/newgame'
 end
 
 get '/gameover' do 
